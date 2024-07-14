@@ -1,7 +1,7 @@
 from prettytable import PrettyTable
 
+
 def calculate_annuity_loan(principal, annual_interest_rate, term_years, monthly_insurance_payment):
-    monthly_interest_rate = annual_interest_rate / 12
     term_months = term_years * 12
 
     # Calculate monthly payment for annuity loan
@@ -42,8 +42,7 @@ def calculate_annuity_loan(principal, annual_interest_rate, term_years, monthly_
 
     return annuity_data, total_paid, total_interest_paid
 
-def calculate_differentiated_loan(principal, annual_interest_rate, term_years, monthly_insurance_payment):
-    monthly_interest_rate = annual_interest_rate / 12
+def calculate_differentiated_loan(principal, monthly_interest_rate, term_years, monthly_insurance_payment):
     term_months = term_years * 12
 
     monthly_principal_payment = principal / term_months
@@ -73,18 +72,19 @@ def calculate_differentiated_loan(principal, annual_interest_rate, term_years, m
 # Main parameters
 principal = 490000
 annual_interest_rate = 7.61 / 100
+monthly_interest_rate = annual_interest_rate / 12
 term_years = 15
 insurance_total = 13238.86
 monthly_insurance_payment = insurance_total / (5 * 12) if insurance_total else 0  # Insurance only for the first 5 years
 
 # Calculate annuity loan
 annuity_data, annuity_total_paid, annuity_total_interest_paid = calculate_annuity_loan(
-    principal, annual_interest_rate, term_years, monthly_insurance_payment
+    principal, monthly_interest_rate, term_years, monthly_insurance_payment
 )
 
 # Calculate differentiated loan
 differentiated_data, differentiated_total_paid, differentiated_total_interest_paid = calculate_differentiated_loan(
-    principal, annual_interest_rate, term_years, monthly_insurance_payment
+    principal, monthly_interest_rate, term_years, monthly_insurance_payment
 )
 
 # Prepare table for output
