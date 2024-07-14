@@ -72,7 +72,7 @@ def calculate_differentiated_loan(principal, monthly_interest_rate, term_years, 
 
 # Main parameters
 principal = 490000
-annual_interest_rate = 7.61 / 100
+annual_interest_rate = 7.71 / 100
 monthly_interest_rate = annual_interest_rate / 12
 term_years = 15
 insurance_total = 13238.86

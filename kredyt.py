@@ -21,7 +21,8 @@ def calculate_annuity_loan(principal, annual_interest_rate, term_months, insuran
 
         # Consider insurance payments only for the first 5 years
         if month <= 5 * 12:
-            principal_payment -= insurance_total / (5 * 12)
+            insurance_payment = insurance_total / (5 * 12)
+            principal_payment -= insurance_payment
 
         # Ensure principal payment is not negative
         if principal_payment < 0:
@@ -41,16 +42,14 @@ def calculate_annuity_loan(principal, annual_interest_rate, term_months, insuran
 
     return annuity_data, total_paid, total_interest_paid
 
-
 # Main parameters
 principal = 490000
-annual_interest_rate = 7.61 / 100
+annual_interest_rate = 7.71 / 100
 term_years = 15
 term_months = term_years * 12
 insurance_total = 13238.86
 additional_payment = 0
 additional_payment_start_month = 12
-
 
 # Calculate annuity loan
 annuity_data, annuity_total_paid, annuity_total_interest_paid = calculate_annuity_loan(
