@@ -1,7 +1,6 @@
 from prettytable import PrettyTable
 
-
-def calculate_annuity_loan(principal, annual_interest_rate, term_years, monthly_insurance_payment):
+def calculate_annuity_loan(principal, monthly_interest_rate, term_years, monthly_insurance_payment):
     term_months = term_years * 12
 
     # Calculate monthly payment for annuity loan
@@ -38,6 +37,8 @@ def calculate_annuity_loan(principal, annual_interest_rate, term_years, monthly_
         total_paid += monthly_payment + additional_payment_this_month
         total_interest_paid += interest_payment
 
+        # Validate calculations
+        assert monthly_payment == principal * (monthly_interest_rate * (1 + monthly_interest_rate) ** term_months) / ((1 + monthly_interest_rate) ** term_months - 1), "Monthly payment calculation error"
         annuity_data.append([month, monthly_payment, principal_payment, interest_payment, max(0, remaining_principal), additional_payment_this_month])
 
     return annuity_data, total_paid, total_interest_paid

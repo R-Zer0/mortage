@@ -1,4 +1,3 @@
-import numpy as np
 from prettytable import PrettyTable
 
 def calculate_annuity_loan(principal, annual_interest_rate, term_years, insurance_total=0, additional_payment=0, additional_payment_start_month=0):
